@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         val switchLockScreen = findViewById<Switch>(R.id.switchLockScreen)
         val btnSave = findViewById<Button>(R.id.btnSave)
 
-        // Load saved preferences
         switchSound.isChecked = sharedPreferences.getBoolean("sound", false)
         switchVibration.isChecked = sharedPreferences.getBoolean("vibration", false)
         switchLED.isChecked = sharedPreferences.getBoolean("led", false)
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         switchShowContent.isChecked = sharedPreferences.getBoolean("content", false)
         switchLockScreen.isChecked = sharedPreferences.getBoolean("lockScreen", false)
 
-        // Save button click listener
         btnSave.setOnClickListener {
             val editor = sharedPreferences.edit()
             editor.putBoolean("sound", switchSound.isChecked)
@@ -44,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             editor.putBoolean("lockScreen", switchLockScreen.isChecked)
             editor.apply()
 
-            // Show confirmation dialog
             showBottomSheetDialog()
         }
     }
